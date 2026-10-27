@@ -1,19 +1,269 @@
+/* ===== Paleta =====
+   Verde  #7FB069   acciones y precios
+   Crema  #FFFBBD   fondo
+   Ámbar  #E6A868   avisos y tiempo   (el código original "E6A68" tenía 5 dígitos; ajusta aquí si era otro)
+   Rojo   #CA3C25   peligro y urgencia
+   Tinta  #1D1A05   texto y bordes
+*/
 :root {
-  font-family: system-ui, sans-serif;
-  color: #243247;
-  background: #f3f6fb;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --verde: #7fb069;
+  --crema: #fffbbd;
+  --ambar: #e6a868;
+  --rojo: #ca3c25;
+  --tinta: #1d1a05;
+  --superficie: #fffef0;
+
+  /* Reactstrap/Bootstrap leen estas variables: así los color="success|warning|danger|dark" usan nuestra paleta */
+  --bs-success: var(--verde);
+  --bs-success-rgb: 127, 176, 105;
+  --bs-warning: var(--ambar);
+  --bs-warning-rgb: 230, 168, 104;
+  --bs-danger: var(--rojo);
+  --bs-danger-rgb: 202, 60, 37;
+  --bs-dark: var(--tinta);
+  --bs-dark-rgb: 29, 26, 5;
+  --bs-body-color: var(--tinta);
+  --bs-body-bg: var(--crema);
+}
+
+/* ===== Base ===== */
+.google-sans,
+body {
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
 }
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0;
+  background: var(--crema);
+  color: var(--tinta);
+  padding-top: 5.5rem;
+  text-align: center;
 }
 
-* {
-  box-sizing: border-box;
+h1, h2, h5 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Panel superior ===== */
+.panel-mision {
+  background: var(--superficie);
+  border-bottom: 2px solid var(--tinta);
+  padding: 0.75rem 1rem;
+}
+.panel-mision__contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem 1.25rem;
+  width: 100%;
+}
+.marca {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.dato strong {
+  font-weight: 700;
+}
+.calculando {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+/* ===== Chips (Badge) ===== */
+.chip {
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.45em 0.9em;
+}
+.chip-total { color: var(--crema); }
+.chip-precio,
+.chip-reloj.bg-warning { color: var(--tinta); }
+.chip-reloj.bg-danger { color: #fff; }
+
+/* ===== Contenido ===== */
+.contenido { padding-bottom: 4rem; }
+
+.encabezado { margin: 2.5rem auto 2rem; max-width: 36rem; }
+.encabezado h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.5rem; }
+.encabezado p { font-size: 1.05rem; opacity: 0.8; }
+
+.seccion__titulo { font-size: 1.4rem; margin-bottom: 1.25rem; }
+
+/* ===== Tarjetas del catálogo ===== */
+.tarjeta {
+  background: var(--superficie);
+  border: 2px solid var(--tinta);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--tinta);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.tarjeta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--tinta);
+}
+.tarjeta__nombre { min-height: 2.6rem; display: flex; align-items: center; justify-content: center; }
+.tarjeta__categoria { color: var(--tinta); opacity: 0.65; }
+.tarjeta__stock { margin: 0.9rem 0 1rem; }
+.tarjeta__stock.sin-stock { color: var(--rojo); }
+
+/* ===== Botones con la paleta ===== */
+.btn { font-weight: 500; border-radius: 10px; }
+.btn-success {
+  --bs-btn-color: var(--tinta);
+  --bs-btn-bg: var(--verde);
+  --bs-btn-border-color: var(--tinta);
+  --bs-btn-hover-color: var(--tinta);
+  --bs-btn-hover-bg: #93c27d;
+  --bs-btn-hover-border-color: var(--tinta);
+  --bs-btn-active-color: var(--tinta);
+  --bs-btn-active-bg: #6fa05a;
+  --bs-btn-active-border-color: var(--tinta);
+  --bs-btn-disabled-color: var(--tinta);
+  --bs-btn-disabled-bg: var(--verde);
+  --bs-btn-disabled-border-color: var(--tinta);
+}
+.btn-secondary {
+  --bs-btn-color: var(--tinta);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--tinta);
+  --bs-btn-disabled-color: var(--tinta);
+  --bs-btn-disabled-bg: rgba(29, 26, 5, 0.08);
+  --bs-btn-disabled-border-color: rgba(29, 26, 5, 0.4);
+}
+.btn-outline-danger {
+  --bs-btn-color: var(--rojo);
+  --bs-btn-border-color: var(--rojo);
+  --bs-btn-hover-bg: var(--rojo);
+  --bs-btn-hover-border-color: var(--rojo);
+  --bs-btn-active-bg: var(--rojo);
+  --bs-btn-active-border-color: var(--rojo);
+  --bs-btn-disabled-color: var(--rojo);
+  --bs-btn-disabled-border-color: var(--rojo);
+}
+.btn-outline-dark {
+  --bs-btn-color: var(--tinta);
+  --bs-btn-border-color: var(--tinta);
+  --bs-btn-hover-bg: var(--tinta);
+  --bs-btn-hover-color: var(--crema);
+  --bs-btn-active-bg: var(--tinta);
+  --bs-btn-active-color: var(--crema);
+  --bs-btn-disabled-color: var(--tinta);
+  --bs-btn-disabled-border-color: var(--tinta);
+}
+.btn:focus-visible { outline: 3px solid var(--ambar); outline-offset: 2px; }
+.cantidad { min-width: 2.5rem; font-weight: 700; opacity: 1 !important; }
+
+/* ===== Bodega (lateral) ===== */
+.bodega {
+  background: var(--superficie);
+  border: 2px solid var(--tinta);
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 6.5rem;
+}
+.bodega__resumen { opacity: 0.7; margin-bottom: 1rem; }
+.bodega__vacia { opacity: 0.7; margin: 1.5rem 0.5rem; }
+.bodega__item {
+  background: transparent;
+  border-color: rgba(29, 26, 5, 0.2);
+  padding: 1rem 0.5rem;
+}
+.bodega__nombre { font-weight: 700; margin-bottom: 0.4rem; }
+.bodega__controles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ===== Alertas ===== */
+.alerta-mision {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  width: min(92vw, 560px);
+  background: var(--ambar);
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 4px 4px 0 var(--tinta);
+}
+
+/* ===== Modal de confirmación (reiniciar misión) ===== */
+.modal-mision {
+  background: var(--crema);
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--tinta);
+  text-align: center;
+}
+.modal-mision .modal-body { padding: 1.75rem 1.5rem 0.5rem; }
+.modal-mision .modal-body h5 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.modal-mision .modal-body p { margin: 0; opacity: 0.8; }
+.modal-mision .modal-footer {
+  border-top: 0;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem 1.5rem;
+}
+.modal-mision .btn-danger {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--rojo);
+  --bs-btn-border-color: var(--tinta);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #b23520;
+  --bs-btn-hover-border-color: var(--tinta);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #9c2d1a;
+  --bs-btn-active-border-color: var(--tinta);
+}
+.modal-mision .btn-outline-secondary {
+  --bs-btn-color: var(--tinta);
+  --bs-btn-border-color: var(--tinta);
+  --bs-btn-hover-color: var(--crema);
+  --bs-btn-hover-bg: var(--tinta);
+  --bs-btn-hover-border-color: var(--tinta);
+  --bs-btn-active-color: var(--crema);
+  --bs-btn-active-bg: var(--tinta);
+  --bs-btn-active-border-color: var(--tinta);
+}
+
+/* ===== Estados especiales ===== */
+.pantalla-central {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.expirada {
+  max-width: 32rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--superficie);
+  border: 2px solid var(--rojo);
+  border-radius: 14px;
+}
+.expirada h2 { color: var(--rojo); }
+
+@media (max-width: 991.98px) {
+  body { padding-top: 7.5rem; }
+  .bodega { position: static; margin-top: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta { transition: none; }
 }
