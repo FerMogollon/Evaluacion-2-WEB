@@ -1,16 +1,16 @@
 {
   "name": "backend-reactor",
   "version": "1.0.0",
-  "private": true,
-  "description": "Backend Express para Reactor",
+  "description": "Backend Express: Estabiliza el Reactor",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js"
   },
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.3.0"
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
   },
   "engines": {
     "node": ">=18"
