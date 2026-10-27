@@ -3,8 +3,6 @@ import { esEnteroPositivo } from "../utils/helpers.js";
 import * as cargaService from "../services/cargaService.js";
 import { listarInventario } from "../services/inventarioService.js";
 
-// Las mutaciones devuelven carga + inventario ya actualizados:
-// el frontend sincroniza todo con UNA sola respuesta.
 const estadoActual = (mensaje) => ({
   mensaje,
   carga: cargaService.obtenerCarga(),
