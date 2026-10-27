@@ -1,16 +1,7 @@
-const express = require("express");
-
-const app = express();
-const PORT = 3000;
-
-app.get("/", (req, res) => {
-    res.send("¡Servidor Express funcionando!");
-});
-
-app.get("/api/status", (req, res) => {
-    res.json({ message: "Conexión con el backend establecida." });
-});
+import "dotenv/config";
+import app from "./app.js";
+import { PORT } from "./config.js";
 
 app.listen(PORT, () => {
-    console.log(`Servidor listo en http://localhost:${PORT}`);
+  console.log(`AstroLogistics listo en http://localhost:${PORT}`);
 });
