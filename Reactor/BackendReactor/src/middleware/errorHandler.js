@@ -3,7 +3,8 @@ import { HttpError } from "../utils/HttpError.js";
 export const notFound = (req, res) =>
   res.status(404).json({ mensaje: `Ruta no encontrada: ${req.method} ${req.originalUrl}` });
 
-
+// Todas las respuestas de error tienen la forma { mensaje, ...extras }.
+// En React: error.mensaje
 export const errorHandler = (err, req, res, next) => {
   if (err instanceof HttpError) {
     return res.status(err.status).json({ mensaje: err.message, ...err.extra });
